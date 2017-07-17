@@ -177,9 +177,9 @@ def start_chat(spy):
     else:
         print 'Sorry you are not of the correct age to be a spy'
 
-if existing == "Y":
+if existing.upper() == "Y":
     start_chat(spy)
-else:
+elif existing.upper() == 'N':
 
     spy = Spy('','',0,0.0)
 
@@ -192,9 +192,18 @@ else:
         spy.age = raw_input("What is your age?")
         spy.age = int(spy.age)
 
-        spy.rating = raw_input("What is your spy rating?")
+        spy.rating = raw_input("What is your spy rating from 2,4,5?")
         spy.rating = float(spy.rating)
+        if spy.rating <3.0 and spy.rating >0.0:
+            print 'not good'
+        elif spy.rating >=3.0 and spy.rating <=7.0:
+            print 'good'
+        elif spy.rating >7.0 and spy.rating <10.0:
+            print 'excelent'
+        else:
+            print "invalid rating"
+            exit()
 
-        start_chat(spy)
-    else:
-        print 'Please add a valid spy name'
+    start_chat(spy)
+else:
+    print 'Please add a valid spy name'
